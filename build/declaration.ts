@@ -48,5 +48,7 @@ export enum EPlaceholder {
   // 接口结构
   interface,
   // 题目来源
-  questionSource
+  questionSource,
+  // 标签
+  tags
 }
