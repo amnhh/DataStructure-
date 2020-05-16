@@ -33,11 +33,20 @@ export const baseRegs: TBaseRegs = {
 
 // 占位符的 placeholder
 export enum EPlaceholder {
+  // 解决方案
   solutions,
+  // 测试用例
   tests,
+  // 问题解释
   questions,
+  // 配置信息
   config,
+  // 问题列表
   questionLists,
+  // 实现
   realize,
-  interface
+  // 接口结构
+  interface,
+  // 题目来源
+  questionSource
 }
