@@ -1,8 +1,14 @@
 {
   "build_target": {
-    "DataSource": ["Array", "HashMap"]
+    "DataSource": [
+      "Array",
+      "HashMap"
+    ]
     "Algorithm": [],
-    "BooksQuestion": ["Sword-Offer"]
+    "BooksQuestion": {
+      "Sword-Offer": "03~重复的数组"
+    }
   },
-  "date": "2020-05-19"
+  "date": "2020-05-19",
+  "type": "question"
 }

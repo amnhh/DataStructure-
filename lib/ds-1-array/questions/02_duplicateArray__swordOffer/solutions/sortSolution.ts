@@ -9,6 +9,8 @@
  * @complex
  *  时间: O(nlogn)
  *    快排 O(n * logn) + 遍历一次 O(n)
+ *
+ * @type Simple
  */
 
 function sortSolution(list:Array<number>): boolean {

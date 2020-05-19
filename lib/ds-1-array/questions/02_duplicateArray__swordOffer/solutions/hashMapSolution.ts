@@ -8,6 +8,8 @@
  *  hashMap[current] 为空则赋值，不为空则说明前面出现过这个数字
  *
  * @complex 时间 O(n) + 空间 O(n)
+ *
+ * @type HashMap
  */
 
 type THashMap = {

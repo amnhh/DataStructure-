@@ -8,8 +8,9 @@
  *  不能多也不能少，reorder 后每个位置都对应着他的下标
  *  数组能倚仗的，其实就只有他的下标。
  *
- * @complex
- *  时间 O(n)
+ * @complex 时间 O(n)
+ *
+ * @type Recommend
  */
 
 function reorderSolution(list: Array<number>): boolean {
