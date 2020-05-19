@@ -29,11 +29,11 @@ describe('《剑指offer第二版》第三题测试用例', () => {
     })
 
     it('方法3：reorder 解法', () => {
-        // assert.isTrue(reorderSolution(sourceList1))
-        // assert.isFalse(reorderSolution(sourceList2))
-        // assert.isFalse(reorderSolution(sourceList3))
-        // assert.isTrue(reorderSolution(sourceList4))
-        // assert.isFalse(reorderSolution(sourceList5))
-        reorderSolution(sourceList5)
+        assert.isTrue(reorderSolution(sourceList1))
+        assert.isFalse(reorderSolution(sourceList2))
+        assert.isFalse(reorderSolution(sourceList3))
+        assert.isTrue(reorderSolution(sourceList4))
+        assert.isFalse(reorderSolution(sourceList5))
+        // reorderSolution(sourceList5)
     })
 })

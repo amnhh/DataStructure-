@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "./lib",
     "experimentalDecorators": true,
     "sourceMap": true,
     "strict": true
   },
-  "include": ["lib/**/*"],
+  "include": [
+    "lib/**/*",
+    "build/**/*"
+  ],
   "exclude": ["node_modules"]
 }

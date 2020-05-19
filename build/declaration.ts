@@ -24,7 +24,7 @@ export const baseRegs: TBaseRegs = {
   
   TESTS_DIR_REG: /^__test__$/,
 
-  // [oldValue, $1, $2] = ‘leetcode-01_twoSum’.match(baseRegs.QUESTION_TOP_LEVEL_NS_REG)
+  // [oldValue, $1, $2]questions = ‘leetcode-01_twoSum’.match(baseRegs.QUESTION_TOP_LEVEL_NS_REG)
   // $1 => leetcode => 问题大类 ~ 属于「leetcode」还是「剑指offer」或者其他
   // $2 => 01_twoSum => 问题的名字
   QUESTION_TOP_LEVEL_NS_REG: /^([a-zA-z0-9_]*)-([a-zA-Z0-9_]*)$/

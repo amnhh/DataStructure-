@@ -6,12 +6,14 @@
   "author": "amnhh <2570079254@qq.com>",
   "license": "MIT",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "ts-node build/index.ts"
   },
   "dependencies": {
     "@types/chai": "^4.2.11",
     "@types/mocha": "^7.0.2",
     "chai": "^4.2.0",
+    "handlebars": "^4.7.6",
     "mocha": "^7.1.2",
     "ts-node": "^8.10.1",
     "typescript": "^3.9.2"
