@@ -4,9 +4,10 @@
 import AlgorithmFileBundle from './AlgorithmFileBundle'
 import DsFileBundle from './DsFileBundle'
 import QuestionFileBundle from './QuestionFileBundle'
-import { FileBundleConfig } from '../../types/interface'
+import { FileBundleConfig, FileBundleTypes } from '../../types/interface'
 import { config } from '../config'
 import * as path from 'path'
+import { resolveTemplateFileName } from '../utils/path-lang';
 
 type FileBundleBundlesType = AlgorithmFileBundle | DsFileBundle | QuestionFileBundle
 
@@ -18,10 +19,16 @@ export default class FileBundle {
     bundles: FileBundleBundlesType = <FileBundleBundlesType>{}
 
     // 配置
+    configPath: string = ''
+
+    // 配置数据
     config: FileBundleConfig = <FileBundleConfig>{}
 
     // 模板路径
     templateFilePath: string = ''
+
+    // 当前 bundle 的名字
+    type: FileBundleTypes = ''
 
     constructor(dirpath: string) {
         this.dirpath = dirpath
@@ -33,7 +40,16 @@ export default class FileBundle {
      */
     readEntry(): void {
         const entryPath: string = path.resolve(this.dirpath, config.entryFileName)
+
         const configRet: FileBundleConfig = require(entryPath)
+        this.configPath = entryPath
         this.config = configRet
+    }
+
+    /**
+     * 绑定模板路径
+     */
+    bindTemplatePath(): void {
+        this.templateFilePath = path.resolve(config.templatesDir, resolveTemplateFileName(this.type))
     }
 }

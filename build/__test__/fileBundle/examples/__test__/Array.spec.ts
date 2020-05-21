@@ -1,8 +1,8 @@
 import { describe, it } from 'mocha'
-import { assert, expect } from 'chai'
-import MyArray from '../../realize/index'
+import { assert } from 'chai'
+import MyArray from '../realize/index'
 
-const filterExactNumberOfArray = <T> (myArray: MyArray<T>): Array<T> => myArray.data.filter(v => !!v)
+const filterExactNumberOfArray: Function = <T> (myArray: MyArray<T>): Array<T> => myArray.data.filter(v => !!v)
 
 describe('数组测试用例', () => {
   describe('<Ctor>constructor: 构造器方法', () => {

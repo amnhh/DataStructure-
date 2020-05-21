@@ -4,11 +4,11 @@
 
 import FileBundle from './index';
 import { FileBundleTypes } from '../../types/interface'
-import * as path from 'path';
-import { config } from '../config'
-import { resolveTemplateFileName } from '../utils/path-lang'
 
 
+/**
+ * 数据结构相关的页面的 build
+ */
 export default class DataStructureFileBundle extends FileBundle{
     // 类型
     type: FileBundleTypes = 'datastructure'
@@ -19,9 +19,10 @@ export default class DataStructureFileBundle extends FileBundle{
     }
 
     /**
-     * 绑定模板路径
+     * 将 bundles 这个变量填充起来
+     * 也就是处理这些东西
      */
-    bindTemplatePath(): void {
-        this.templateFilePath = path.resolve(config.templatesDir, resolveTemplateFileName(this.type))
+    build(): void {
+        debugger
     }
 }

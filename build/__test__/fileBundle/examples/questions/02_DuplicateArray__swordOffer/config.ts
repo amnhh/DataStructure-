@@ -1,4 +1,4 @@
-import { FileBundleConfig } from '../../../../types/interface'
+import { FileBundleConfig } from '../../../../../../types/interface'
 
 const config: FileBundleConfig = {
   date: '2020-05-19',
@@ -18,4 +18,3 @@ const config: FileBundleConfig = {
 }
 
 export default config
-

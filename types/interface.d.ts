@@ -16,15 +16,22 @@ export interface BookNotesValues {
     SwordOffer?: string
 }
 
-export type FileBundleTypes = 'datastructure' | 'questions' | 'algorithm'
+export type FileBundleTypes = 'datastructure' | 'questions' | 'algorithm' | ''
 
 // config.json 文件产出的接口信息
 export interface FileBundleConfig {
+    // 问题的 build target
     build_target?: {
         DataSource?: Array<DataStructureValues>
         Algorthm?: Array<AlgorithmValues>
         QuestionNotes?: BookNotesValues
     }
+    // 时间
     date: string
+    // 类型
     type: FileBundleTypes
+    // 英文名字
+    name: string
+    // 中文名字
+    cname: string
 }

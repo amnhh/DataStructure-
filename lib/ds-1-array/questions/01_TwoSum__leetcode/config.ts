@@ -18,7 +18,9 @@ const config: FileBundleConfig = {
                 ]
             }
         }
-    }
+    },
+    name: 'TwoSum',
+    cname: '两数之和'
 }
 
 export default config
