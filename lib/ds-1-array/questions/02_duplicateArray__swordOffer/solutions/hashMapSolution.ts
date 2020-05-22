@@ -1,5 +1,5 @@
 /**
- * 解法二: 遍历 + hashMap
+ * @title hashMap 求解
  *
  * @index 2
  *

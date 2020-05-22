@@ -13,7 +13,7 @@ import { FileBundleBundlesType } from '../fileBundle/index'
  *
  * 工程的最小数据单元是 Question
  */
-export default class GlobalVars {
+export class GlobalVars {
     // leetcode 习题集
     private LeetcodeQuestions: Array<QuestionFileBundle> = []
     // 剑指 offer 习题集
@@ -24,12 +24,25 @@ export default class GlobalVars {
     private AlgorithmLists: Map<string, AlgorithmFileBundle> = new Map<string, AlgorithmFileBundle>()
 
     /**
-     * 存数据
-     * @param type => 可以是直接 LeetcodeQuestions, SwordOfferQuestions, DataStructureLists, AlgorithmLists，就直接 Map.set
-     *                也可以是复合，例如 DataStructureLists -> children, 意为向某个数据结构的 bundle.children 属性中 push
-     * @param value
+     * 存数据 => 直接存......
+     * @param sourceType => LeetcodeQuestions, SwordOfferQuestions, DataStructureLists, AlgorithmLists，直接 Map.set
+     * @param value => 各个 fileBundle 的实例
      */
-    set(type: string, value: FileBundleBundlesType): void {
+    set(sourceType: string, value: FileBundleBundlesType): void {
+
+    }
+
+    /**
+     * 存数据 => 存到某个已有数据的 children 属性中
+     * @param sourceType => 存储的时哪个 globalVars 里的数据
+     * @param value => 各个 fileBundle 的实例
+     * @param filterFn => 如何从这 map 里找到父级
+     */
+    setChildren(sourceType: string, filterFn: Function, value: FileBundleBundlesType) {
 
     }
 }
+
+const globalVars = new GlobalVars()
+
+export default globalVars

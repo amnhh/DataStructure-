@@ -1,5 +1,5 @@
 /**
- * 解法一 两次循环求解
+ * @title 两次循环求解
  *
  * @index 1
  *
@@ -11,7 +11,7 @@
  * @type NestLooping
  */
 
-export default function LoopInLoop (nums: Array<number>, target: number): Array<number> {
+export default function LoopInLoopSolution (nums: Array<number>, target: number): Array<number> {
     // 外层从 0 开始遍历
     for (let i: number = 0; i < nums.length; i ++) {
         // 内层从 i + 1 开始遍历
