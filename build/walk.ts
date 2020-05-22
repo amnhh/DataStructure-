@@ -1,13 +1,9 @@
-import { compile, TemplateDelegate } from 'handlebars'
 import * as path from 'path'
 import * as fs from 'fs'
-import { FileBundleBundlesType } from './fileBundle/index'
-import QuestionFileBundle from './fileBundle/QuestionFileBundle'
-import { FileBundleTypes } from '../types/interface'
-import DataStructureFileBundle from './fileBundle/DsFileBundle'
-import AlgorithmFileBundle from './fileBundle/AlgorithmFileBundle';
+import { getFileBundle } from './fileBundle/index'
+import { ICompositeResponse, parseCompositeName } from './utils/name'
 
-
+// 一个指向 `/root/lib` 目录的 path 函数
 const libDirResolver = (dir: string = ''): string => path.resolve(__dirname, '../lib', dir)
 
 
@@ -27,7 +23,8 @@ const entries: Array<string> = fs.readdirSync(libDirResolver(), { encoding: 'utf
 export default function run(): void {
     entries
         .forEach(name => {
-            console.log(name)
-            debugger
+            const nameInfos: ICompositeResponse = parseCompositeName(name)
+            const fileBundle = getFileBundle(nameInfos.bundleName, libDirResolver(name))
+            fileBundle.init()
         })
 }

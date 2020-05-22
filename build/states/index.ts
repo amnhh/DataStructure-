@@ -1,8 +1,11 @@
 import AlgorithmFileBundle from '../fileBundle/AlgorithmFileBundle'
 import DataStructureFileBundle from '../fileBundle/DsFileBundle'
 import QuestionFileBundle from '../fileBundle/QuestionFileBundle'
-import { DataStructureKeys } from '../../types/interface'
+import { DataStructureKeys, AlgorithmKeys } from '../../types/interface'
 import { FileBundleBundlesType } from '../fileBundle/index'
+
+type TSourceType = 'DataStructureLists' | 'AlgorithmLists'
+type TReactNameType = DataStructureKeys | AlgorithmKeys
 
 /**
  * 公共数据管理
@@ -16,30 +19,60 @@ import { FileBundleBundlesType } from '../fileBundle/index'
 export class GlobalVars {
     // leetcode 习题集
     private LeetcodeQuestions: Array<QuestionFileBundle> = []
+
     // 剑指 offer 习题集
     private SwordOfferQuestions: Array<QuestionFileBundle> = []
+
     // 数据结构的 bundle
     private DataStructureLists: Map<DataStructureKeys, DataStructureFileBundle> = new Map<DataStructureKeys, DataStructureFileBundle>()
+
     // 算法学习的 bundle
-    private AlgorithmLists: Map<string, AlgorithmFileBundle> = new Map<string, AlgorithmFileBundle>()
+    private AlgorithmLists: Map<AlgorithmKeys, AlgorithmFileBundle> = new Map<AlgorithmKeys, AlgorithmFileBundle>()
+
+    // 所有问题的 bundle
+    private QuestionsBundleList: Array<QuestionFileBundle> = []
 
     /**
-     * 存数据 => 直接存......
-     * @param sourceType => LeetcodeQuestions, SwordOfferQuestions, DataStructureLists, AlgorithmLists，直接 Map.set
-     * @param value => 各个 fileBundle 的实例
+     * 添加问题单元
+     * @param questionInstance
      */
-    set(sourceType: string, value: FileBundleBundlesType): void {
+    addQuestion(questionInstance: QuestionFileBundle): void {
+        this.QuestionsBundleList.push(questionInstance)
+    }
 
+    addLeetcode(questionInstance: QuestionFileBundle): void {
+        this.LeetcodeQuestions.push(questionInstance)
+    }
+
+    addSwordOffer(questionInstance: QuestionFileBundle): void {
+        this.SwordOfferQuestions.push(questionInstance)
     }
 
     /**
-     * 存数据 => 存到某个已有数据的 children 属性中
-     * @param sourceType => 存储的时哪个 globalVars 里的数据
-     * @param value => 各个 fileBundle 的实例
-     * @param filterFn => 如何从这 map 里找到父级
+     * 向某个 DataStructure 或者 Algorithm 的 children 属性中添加 question
      */
-    setChildren(sourceType: string, filterFn: Function, value: FileBundleBundlesType) {
+    setDsChild(reactName: DataStructureKeys,value: QuestionFileBundle): void {
+        (<DataStructureFileBundle>this.DataStructureLists.get(reactName)).children.push(value)
+    }
 
+    setAlgChild(reactName: AlgorithmKeys, value: QuestionFileBundle): void {
+        (<AlgorithmFileBundle>this.AlgorithmLists.get(reactName)).children.push(value)
+    }
+
+    /**
+     * 设置「数据结构」 bundle
+     */
+    setDs(reactName: DataStructureKeys, value: DataStructureFileBundle): void {
+        this.DataStructureLists.set(reactName, value)
+    }
+
+    /**
+     * 设置 「算法」 bundle
+     * @param reactName
+     * @param value
+     */
+    setAlg(reactName: AlgorithmKeys, value: AlgorithmFileBundle): void {
+        this.AlgorithmLists.set(reactName, value)
     }
 }
 

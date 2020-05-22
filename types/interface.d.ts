@@ -38,3 +38,6 @@ export interface FileBundleConfig {
 
 // 数据结构所拥有的key
 export type DataStructureKeys = 'Array' | 'LinkedList' | 'Queue' | 'Stack' | 'Tree' | 'Table'
+
+// 算法相关所拥有的 keys
+export type AlgorithmKeys = 'BubbleSort'

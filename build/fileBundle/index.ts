@@ -73,6 +73,10 @@ export default class FileBundle {
     bindTemplatePath(): void {
         this.templateFilePath = path.resolve(config.templatesDir, resolveTemplateFileName(this.type))
     }
+
+    init(): void {
+        console.log(this.type)
+    }
 }
 
 export const getFileBundle = (type: FileBundleTypes = 'questions', dirpath: string): FileBundleBundlesType => {
