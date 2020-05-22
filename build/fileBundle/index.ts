@@ -9,7 +9,7 @@ import { config } from '../config'
 import * as path from 'path'
 import { resolveTemplateFileName } from '../utils/path-lang';
 
-type FileBundleBundlesType = AlgorithmFileBundle | DsFileBundle | QuestionFileBundle
+export type FileBundleBundlesType = AlgorithmFileBundle | DsFileBundle | QuestionFileBundle
 
 export default class FileBundle {
     // 目录路径, 会默认读取目录下的 config.json
@@ -30,20 +30,41 @@ export default class FileBundle {
     // 当前 bundle 的名字
     type: FileBundleTypes = ''
 
+    // 英文名
+    name: string = ''
+
+    // 中文名
+    cname: string = ''
+
+    // 时间
+    date: string = ''
+
     constructor(dirpath: string) {
         this.dirpath = dirpath
-        this.readEntry()
+        this.readConfigAndInitInfo()
     }
 
     /**
      * 读取入口文件的配置信息
      */
-    readEntry(): void {
+    readConfigAndInitInfo(): void {
         const entryPath: string = path.resolve(this.dirpath, config.entryFileName)
 
-        const configRet: FileBundleConfig = require(entryPath)
+        const configRet: FileBundleConfig = require(entryPath).default
+
         this.configPath = entryPath
         this.config = configRet
+
+        const { name, cname, date } = this.config
+
+        if (!name || !cname || !date) {
+            throw new Error(`${entryPath} 下必要信息缺失`)
+            process.exit(0)
+        }
+
+        this.name = name
+        this.cname = cname
+        this.date = date
     }
 
     /**

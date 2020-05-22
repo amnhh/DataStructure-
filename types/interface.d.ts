@@ -35,3 +35,6 @@ export interface FileBundleConfig {
     // 中文名字
     cname: string
 }
+
+// 数据结构所拥有的key
+export type DataStructureKeys = 'Array' | 'LinkedList' | 'Queue' | 'Stack' | 'Tree' | 'Table'

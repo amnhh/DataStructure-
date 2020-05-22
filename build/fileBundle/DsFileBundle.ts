@@ -4,6 +4,7 @@
 
 import FileBundle from './index';
 import { FileBundleTypes } from '../../types/interface'
+import QuestionFileBundle from './QuestionFileBundle'
 
 
 /**
@@ -12,6 +13,8 @@ import { FileBundleTypes } from '../../types/interface'
 export default class DataStructureFileBundle extends FileBundle{
     // 类型
     type: FileBundleTypes = 'datastructure'
+
+    children: Array<QuestionFileBundle> = []
 
     constructor (dirpath: string) {
         super(dirpath)
