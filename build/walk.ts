@@ -1,9 +1,15 @@
 import { compile, TemplateDelegate } from 'handlebars'
 import * as path from 'path'
 import * as fs from 'fs'
+import { FileBundleBundlesType } from './fileBundle/index'
+import QuestionFileBundle from './fileBundle/QuestionFileBundle'
+import { FileBundleTypes } from '../types/interface'
+import DataStructureFileBundle from './fileBundle/DsFileBundle'
+import AlgorithmFileBundle from './fileBundle/AlgorithmFileBundle';
 
 
 const libDirResolver = (dir: string = ''): string => path.resolve(__dirname, '../lib', dir)
+
 
 /**
  * 整个分为一下阶段
@@ -15,10 +21,10 @@ const libDirResolver = (dir: string = ''): string => path.resolve(__dirname, '..
  * 4. 产出 html 文件，或者直接通过一个 html，然后渲染的方式？
  */
 
-const entries = fs.readdirSync(libDirResolver(), { encoding: 'utf8' })
+const entries: Array<string> = fs.readdirSync(libDirResolver(), { encoding: 'utf8' })
 
 
-export default function run() {
+export default function run(): void {
     entries
         .forEach(name => {
             console.log(name)

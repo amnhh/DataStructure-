@@ -2,14 +2,14 @@
  * fileBundle 的主类
  */
 import AlgorithmFileBundle from './AlgorithmFileBundle'
-import DsFileBundle from './DsFileBundle'
+import DataStructureFileBundle from './DsFileBundle'
 import QuestionFileBundle from './QuestionFileBundle'
 import { FileBundleConfig, FileBundleTypes } from '../../types/interface'
 import { config } from '../config'
 import * as path from 'path'
 import { resolveTemplateFileName } from '../utils/path-lang';
 
-export type FileBundleBundlesType = AlgorithmFileBundle | DsFileBundle | QuestionFileBundle
+export type FileBundleBundlesType = AlgorithmFileBundle | DataStructureFileBundle | QuestionFileBundle
 
 export default class FileBundle {
     // 目录路径, 会默认读取目录下的 config.json
@@ -73,4 +73,22 @@ export default class FileBundle {
     bindTemplatePath(): void {
         this.templateFilePath = path.resolve(config.templatesDir, resolveTemplateFileName(this.type))
     }
+}
+
+export const getFileBundle = (type: FileBundleTypes = 'questions', dirpath: string): FileBundleBundlesType => {
+    let retFileBundle: FileBundleBundlesType = <FileBundleBundlesType>{}
+
+    switch (type) {
+        case 'questions':
+            retFileBundle = new QuestionFileBundle(dirpath)
+            break
+        case 'datastructure':
+            retFileBundle = new DataStructureFileBundle(dirpath)
+            break
+        case 'algorithm':
+            retFileBundle = new AlgorithmFileBundle(dirpath)
+            break
+    }
+
+    return retFileBundle
 }
