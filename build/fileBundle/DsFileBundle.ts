@@ -42,8 +42,6 @@ export default class DataStructureFileBundle extends FileBundle {
     constructor (dirpath: string) {
         super(dirpath)
         this.bindTemplatePath()
-
-        this.build()
         this.recordBundle()
     }
 
@@ -62,8 +60,10 @@ export default class DataStructureFileBundle extends FileBundle {
         this.buildChildQuestions()
     }
 
+    /**
+     * 在 globaVars 中记录这个 bundle
+     */
     recordBundle(): void {
-        debugger
         globalVars.setDs(<DataStructureKeys>this.name, this)
     }
 

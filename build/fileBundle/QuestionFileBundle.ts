@@ -1,6 +1,7 @@
-import { FileBundleTypes } from '../../types/interface';
-import FileBundle from './index';
-import globalVars from '../states';
+import { FileBundleTypes } from '../../types/interface'
+import FileBundle from './index'
+import globalVars from '../states'
+import { getTmpValue } from '../utils/fs-lang';
 
 interface ISolutionBundle {
     input: string
@@ -13,11 +14,10 @@ export default class QuestionFileBundle extends FileBundle {
     // 类型
     type: FileBundleTypes = 'questions'
 
-    buildTarget: Array<string> = []
-
     constructor (dirpath: string) {
         super(dirpath)
         this.bindTemplatePath()
+        this.recordBundle()
         this.build()
     }
 
@@ -26,19 +26,28 @@ export default class QuestionFileBundle extends FileBundle {
      * 也就是处理这些东西
      */
     build(): void {
-        console.log(`QUESTION: ${this.dirpath}`)
+        // 获取模板
+        this.templateValue = getTmpValue(this.type)
+
+        // 获取各项模板的值, 挨个实现
+        debugger
+        this.readQuestion()
+        this.readSolutions()
+
     }
 
-    /**
-     * 初始化「问题」bundle的产出位置
-     * 只处理 config 里的 build_target 位置
-     * 将整个 questionFileBundle 放到对应的 global states 里
-     * 后续再往 this 上挂各种各样的东西
-     */
-    initBuildTarget(): void {
-        const { build_target } = this.config
+    readQuestion(): void {}
 
-        debugger
+    readSolutions(): void {}
+
+
+    /**
+     * 将实例本身记录到 globalVars 中
+     * 真正向 LeetCode、Datastructure 之类的填充 question 的过程
+     * 在全部 init 完成后，通过遍历 QuestionList 的方式进行插空
+     */
+    recordBundle(): void {
+        globalVars.addQuestion(this)
     }
 }
 

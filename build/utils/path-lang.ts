@@ -1,5 +1,8 @@
 import * as path from 'path'
 
+// 一个指向 `/root/lib` 目录的 path 函数
+export const libDirResolver = (dir: string = ''): string => path.resolve(__dirname, '../../lib', dir)
+
 /**
  * 统一管理 hbs 的扩展名
  * ps: 万一哪天想换了呢~

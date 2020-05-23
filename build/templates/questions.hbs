@@ -1,0 +1,20 @@
+<!-- 「问题」的 markdown 模板 -->
+
+{{ questions }}
+
+{{#each solutions}}
+
+    <!-- 标题 -->
+    {{ this.title }}
+
+    <!-- 思路 -->
+    {{ this.trainOfThought }}
+
+    <!-- 代码实现 -->
+    {{ this.code }}
+
+    <!-- 复杂度 -->
+    {{ this.complex }}
+{{/each}}
+
+{{ testCases }}
