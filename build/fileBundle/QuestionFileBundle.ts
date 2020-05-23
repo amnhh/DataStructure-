@@ -18,7 +18,7 @@ export default class QuestionFileBundle extends FileBundle {
     constructor (dirpath: string) {
         super(dirpath)
         this.bindTemplatePath()
-        // this.initBuildTarget()
+        this.build()
     }
 
     /**
@@ -26,7 +26,7 @@ export default class QuestionFileBundle extends FileBundle {
      * 也就是处理这些东西
      */
     build(): void {
-        debugger
+        console.log(`QUESTION: ${this.dirpath}`)
     }
 
     /**
@@ -41,3 +41,5 @@ export default class QuestionFileBundle extends FileBundle {
         debugger
     }
 }
+
+export const buildQuestion = (dirname: string): QuestionFileBundle => new QuestionFileBundle(dirname)

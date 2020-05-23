@@ -1,22 +1,23 @@
 /**
  * fileBundle 的主类
  */
-import AlgorithmFileBundle from './AlgorithmFileBundle'
-import DataStructureFileBundle from './DsFileBundle'
-import QuestionFileBundle from './QuestionFileBundle'
-import { FileBundleConfig, FileBundleTypes } from '../../types/interface'
+// import AlgorithmFileBundle from './AlgorithmFileBundle'
+// import DataStructureFileBundle from './DsFileBundle'
+// import QuestionFileBundle from './QuestionFileBundle'
+import { DataStructureKeys, FileBundleConfig, FileBundleTypes } from '../../types/interface'
 import { config } from '../config'
 import * as path from 'path'
-import { resolveTemplateFileName } from '../utils/path-lang';
+import {
+    resolveTemplateFileName,
+    getNotesFilepath
+} from '../utils/path-lang';
+import { getFileValue } from '../utils/fs-lang'
 
-export type FileBundleBundlesType = AlgorithmFileBundle | DataStructureFileBundle | QuestionFileBundle
+// export type FileBundleBundlesType = DataStructureFileBundle | QuestionFileBundle
 
 export default class FileBundle {
     // 目录路径, 会默认读取目录下的 config.json
     dirpath: string
-
-    // 文件的各项解析结果
-    bundles: FileBundleBundlesType = <FileBundleBundlesType>{}
 
     // 配置
     configPath: string = ''
@@ -26,6 +27,9 @@ export default class FileBundle {
 
     // 模板路径
     templateFilePath: string = ''
+
+    // 模板
+    templateValue: string = ''
 
     // 当前 bundle 的名字
     type: FileBundleTypes = ''
@@ -38,6 +42,9 @@ export default class FileBundle {
 
     // 时间
     date: string = ''
+
+    // 笔记
+    notes: string = ''
 
     constructor(dirpath: string) {
         this.dirpath = dirpath
@@ -74,25 +81,11 @@ export default class FileBundle {
         this.templateFilePath = path.resolve(config.templatesDir, resolveTemplateFileName(this.type))
     }
 
-    init(): void {
-        console.log(this.type)
+    /**
+     * 读取相应的笔记
+     */
+    readNotes(): void {
+        const notePath: string = getNotesFilepath(this.dirpath)
+        this.notes = getFileValue(notePath)
     }
-}
-
-export const getFileBundle = (type: FileBundleTypes = 'questions', dirpath: string): FileBundleBundlesType => {
-    let retFileBundle: FileBundleBundlesType = <FileBundleBundlesType>{}
-
-    switch (type) {
-        case 'questions':
-            retFileBundle = new QuestionFileBundle(dirpath)
-            break
-        case 'datastructure':
-            retFileBundle = new DataStructureFileBundle(dirpath)
-            break
-        case 'algorithm':
-            retFileBundle = new AlgorithmFileBundle(dirpath)
-            break
-    }
-
-    return retFileBundle
 }

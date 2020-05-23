@@ -1,11 +1,11 @@
-import AlgorithmFileBundle from '../fileBundle/AlgorithmFileBundle'
+// import AlgorithmFileBundle from '../fileBundle/AlgorithmFileBundle'
 import DataStructureFileBundle from '../fileBundle/DsFileBundle'
 import QuestionFileBundle from '../fileBundle/QuestionFileBundle'
 import { DataStructureKeys, AlgorithmKeys } from '../../types/interface'
-import { FileBundleBundlesType } from '../fileBundle/index'
 
-type TSourceType = 'DataStructureLists' | 'AlgorithmLists'
-type TReactNameType = DataStructureKeys | AlgorithmKeys
+interface IWalkDsStructure <K, V>{
+    cb(value: V, key: K, map: Map<K, V>): void
+}
 
 /**
  * 公共数据管理
@@ -27,7 +27,7 @@ export class GlobalVars {
     private DataStructureLists: Map<DataStructureKeys, DataStructureFileBundle> = new Map<DataStructureKeys, DataStructureFileBundle>()
 
     // 算法学习的 bundle
-    private AlgorithmLists: Map<AlgorithmKeys, AlgorithmFileBundle> = new Map<AlgorithmKeys, AlgorithmFileBundle>()
+    // private AlgorithmLists: Map<AlgorithmKeys, AlgorithmFileBundle> = new Map<AlgorithmKeys, AlgorithmFileBundle>()
 
     // 所有问题的 bundle
     private QuestionsBundleList: Array<QuestionFileBundle> = []
@@ -55,9 +55,14 @@ export class GlobalVars {
         (<DataStructureFileBundle>this.DataStructureLists.get(reactName)).children.push(value)
     }
 
-    setAlgChild(reactName: AlgorithmKeys, value: QuestionFileBundle): void {
-        (<AlgorithmFileBundle>this.AlgorithmLists.get(reactName)).children.push(value)
-    }
+    /**
+     * 向某个 ALgorithm 的 children 属性中添加 question
+     * @param reactName
+     * @param value
+     */
+    // setAlgChild(reactName: AlgorithmKeys, value: QuestionFileBundle): void {
+    //     (<AlgorithmFileBundle>this.AlgorithmLists.get(reactName)).children.push(value)
+    // }
 
     /**
      * 设置「数据结构」 bundle
@@ -71,8 +76,23 @@ export class GlobalVars {
      * @param reactName
      * @param value
      */
-    setAlg(reactName: AlgorithmKeys, value: AlgorithmFileBundle): void {
-        this.AlgorithmLists.set(reactName, value)
+    // setAlg(reactName: AlgorithmKeys, value: AlgorithmFileBundle): void {
+    //     this.AlgorithmLists.set(reactName, value)
+    // }
+
+    /**
+     * 遍历整个 DataStructure 的列表
+     * 执行 cb
+     */
+    walkDsList(walkerOptions: IWalkDsStructure<DataStructureKeys, DataStructureFileBundle>): void {
+        this.DataStructureLists.forEach(walkerOptions.cb)
+    }
+
+    /**
+     * 获取 DataStructureLists 的长度
+     */
+    getDsSize(): number {
+        return this.DataStructureLists.size
     }
 }
 

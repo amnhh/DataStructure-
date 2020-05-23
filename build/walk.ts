@@ -1,8 +1,7 @@
 import * as path from 'path'
 import * as fs from 'fs'
-import { getFileBundle } from './fileBundle/index'
 import { ICompositeResponse, parseCompositeName } from './utils/name'
-
+import { getFileBundle } from './fileBundle/output'
 // 一个指向 `/root/lib` 目录的 path 函数
 const libDirResolver = (dir: string = ''): string => path.resolve(__dirname, '../lib', dir)
 
@@ -24,7 +23,8 @@ export default function run(): void {
     entries
         .forEach(name => {
             const nameInfos: ICompositeResponse = parseCompositeName(name)
+
             const fileBundle = getFileBundle(nameInfos.bundleName, libDirResolver(name))
-            fileBundle.init()
+            fileBundle.build()
         })
 }
