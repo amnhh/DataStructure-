@@ -1,3 +1,4 @@
+"use strict";
 /**
  * @title HashMap 解法
  *
@@ -21,19 +22,16 @@
  *
  * @category
  */
-
-type THashMap = {
-    [index: number]: boolean
-}
-
-export default function HashMapSolution (nums: Array<number>): boolean {
-    const HashMap: THashMap = <THashMap>{}
-
-    for (let i: number = 0; i < nums.length; i ++) {
-        const current: number = nums[i]
-        if (!HashMap[current]) HashMap[current] = true
-        else return true
+exports.__esModule = true;
+function HashMapSolution(nums) {
+    var HashMap = {};
+    for (var i = 0; i < nums.length; i++) {
+        var current = nums[i];
+        if (!HashMap[current])
+            HashMap[current] = true;
+        else
+            return true;
     }
-
-    return false
+    return false;
 }
+exports["default"] = HashMapSolution;
