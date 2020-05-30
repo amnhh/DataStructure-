@@ -2,7 +2,8 @@
   "extension": ["ts"],
   "spec": [
     "DataStructure/**/*.spec.ts",
-    "Leetcode/**/*.spec.ts"
+    "Leetcode/**/*.spec.ts",
+    "IntroductionToAlgorithm/**/*.spec.ts"
   ],
   "require": "ts-node/register"
 }

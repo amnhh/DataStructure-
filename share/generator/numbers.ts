@@ -77,7 +77,6 @@ export const genRandomRepeatedNumberList = (capacity: number = 10, min: number =
  */
 export const genNoneRepeatedNumberList = (capacity: number = 10, min: number = minLimit, max: number = maxLimit): Array<number> => {
     const ret: Array<number> = []
-    debugger
     while(true) {
         const current = genRandomNumber(min, max)
         if (ret.indexOf(current) === -1) ret.push(current)
@@ -86,3 +85,33 @@ export const genNoneRepeatedNumberList = (capacity: number = 10, min: number = m
 
     return ret
 }
+
+interface IGen0bNumber {
+    min?: number
+    max?: number
+    length?: number
+    needArray?: boolean
+}
+
+/**
+ * 返回一个二进制字符串或者数组
+ * 只支持 10 位以下
+ * @param min 最大值
+ * @param max 最小值
+ * @param length 长度
+ * @param needArray 是否需要 Array 格式返回
+ */
+export const gen0bNumber = ({
+    min = minLimit,
+    max = maxLimit,
+    needArray = false,
+    length = 10
+}: IGen0bNumber): string | Array<number> => {
+    const targetStr: string = genRandomNumber(min, max).toString(2)
+    const retStr = `${new Array(length).fill(0).join('')}${targetStr}`.slice(-length)
+
+    return needArray
+        ? retStr.split('').map(v => Number(v))
+        : retStr
+}
+

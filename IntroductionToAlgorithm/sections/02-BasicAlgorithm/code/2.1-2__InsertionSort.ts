@@ -1,6 +1,6 @@
 /**
- * 插入排序
- * @param nums 待排序的数组
+ * 习题 2.1-2
+ * 降序排列的插入排序
  */
 export default function insertionSort (nums: Array<number>): Array<number> {
     for (let j: number = 1; j < nums.length; j ++) {
