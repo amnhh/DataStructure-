@@ -5,7 +5,7 @@ import { assert } from 'chai'
 import InsertionSort from '../code/InsertionSort'
 
 // 原生的 sort 方法
-const sort = (nums: Array<number>): Array<number> => nums.sort((v1, v2) => v1 - v2)
+import { nativeSort } from '../../../../share/utils'
 
 const list1 = genRandomNumberList()
 const list2 = genRandomNumberList()
@@ -15,10 +15,10 @@ const list5 = genRandomNumberList()
 
 describe('插入排序测试用例', () => {
     it('排序正确', () => {
-        assert.deepEqual(sort(list1), InsertionSort(list1))
-        assert.deepEqual(sort(list2), InsertionSort(list2))
-        assert.deepEqual(sort(list3), InsertionSort(list3))
-        assert.deepEqual(sort(list4), InsertionSort(list4))
-        assert.deepEqual(sort(list5), InsertionSort(list5))
+        assert.deepEqual(nativeSort(list1), InsertionSort(list1))
+        assert.deepEqual(nativeSort(list2), InsertionSort(list2))
+        assert.deepEqual(nativeSort(list3), InsertionSort(list3))
+        assert.deepEqual(nativeSort(list4), InsertionSort(list4))
+        assert.deepEqual(nativeSort(list5), InsertionSort(list5))
     })
 })
