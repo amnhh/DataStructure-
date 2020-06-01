@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "test": "mocha",
-    "build": "ts-node build/index.ts"
+    "build": "ts-node build/index.ts",
+    "build:leetcode": "ts-node Leetcode/parser/index.ts"
   },
   "dependencies": {
     "@types/chai": "^4.2.11",

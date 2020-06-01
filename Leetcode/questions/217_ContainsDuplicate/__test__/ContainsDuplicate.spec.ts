@@ -5,7 +5,7 @@ import HashMapSolution from '../solutions/HashMapSolution'
 import SetSizeSolution from '../solutions/SetSizeSolution'
 import ReorderSolution from '../solutions/ReorderSolution'
 
-import { genRandomRepeatedNumberList, genNoneRepeatedNumberList } from '../../../share/generator'
+import { genRandomRepeatedNumberList, genNoneRepeatedNumberList } from '../../../../share/generator'
 
 describe('217-存在重复元素 测试用例', () => {
     it('HashMap 解法', () => {
