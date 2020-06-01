@@ -37,8 +37,6 @@ export function merge (
     for (let j: number = 0; j < n2; j ++) {
         R[j] = nums[mid + j]
     }
-    L[n1 + 1] = Infinity
-    R[n2 + 1] = Infinity
 
     let i = 1, j = 1
     for (let k: number = start; k < end; k ++) {
@@ -48,6 +46,27 @@ export function merge (
         } else {
             nums[k] = R[j]
             j ++
+        }
+        // 如果 L 或者 R 提前消费完，则手动将 K 拷贝为没消费完的数组的剩余元素
+        if (i === n1) {
+            for (
+                let w: number = k + 1;
+                w < end && j < n2 ;
+                w ++, j ++
+            ) {
+                nums[w] = R[j]
+            }
+            break
+        }
+        if (j === n2) {
+            for (
+                let w: number = k + 1;
+                w < end && i < n1;
+                w ++, i ++
+            ) {
+                nums[w] = L[i]
+            }
+            break
         }
     }
 }
