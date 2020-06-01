@@ -11,11 +11,12 @@ const list4 = genRandomNumberList()
 const list5 = genRandomNumberList()
 
 describe('归并排序', () => {
+    // TODO 调通归并排序
     it('排序代码正确', () => {
-        assert.deepEqual(nativeSort(list1), mergeSort(list1))
-        assert.deepEqual(nativeSort(list2), mergeSort(list2))
-        assert.deepEqual(nativeSort(list3), mergeSort(list3))
-        assert.deepEqual(nativeSort(list4), mergeSort(list4))
-        assert.deepEqual(nativeSort(list5), mergeSort(list5))
+        assert.deepEqual(nativeSort([...list1]), mergeSort([...list1]))
+        assert.deepEqual(nativeSort([...list2]), mergeSort([...list2]))
+        assert.deepEqual(nativeSort([...list3]), mergeSort([...list3]))
+        assert.deepEqual(nativeSort([...list4]), mergeSort([...list4]))
+        assert.deepEqual(nativeSort([...list5]), mergeSort([...list5]))
     })
 })
