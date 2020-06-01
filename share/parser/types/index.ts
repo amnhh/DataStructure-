@@ -47,3 +47,69 @@ export interface INoteConfig {
 export type LineResolverType =
     | 'note-inner-params'
     | ''
+
+/**
+ * Solution Parser
+ */
+type TSolutionParserType = 'source' | 'article'
+
+/**
+ * 源代码解析的最小单元
+ */
+export interface ISolutionParserUnit {
+    // 源代码 | 文章
+    type: TSolutionParserType
+}
+
+/**
+ * 源代码
+ */
+export interface ISolutionSource extends ISolutionParserUnit {
+    sourceCode: string
+    sourceType: string
+}
+
+/**
+ * comment 所枚举出来的类型
+ */
+export type TSolutionCommentType = ''
+    | 'title'
+    | 'index'
+    | 'trainOfThought'
+    | 'complexAnalysis'
+    | 'type'
+    | 'note'
+    | 'remark'
+    | 'category'
+    | 'score'
+
+/**
+ * 源代码注释所解析出来的文章模块
+ */
+/**
+ * 源代码注释所解析出来的文章模块
+ */
+export type TSolutionArticle = ISolutionParserUnit & {
+    [index in keyof TSolutionCommentType]: string
+} & {
+    commentSource: string
+}
+
+/**
+ * 源代码分块的结果
+ */
+export type TBlockSplitResult = {
+    // 入参
+    input: string
+
+    // 返回值
+    outputList: Array<string>
+}
+
+/**
+ * 源代码分块解析结果
+ */
+export type TBlockParseResult = {
+    input: Array<string>
+    outputList: Array<TSolutionArticle | ISolutionSource>
+}
