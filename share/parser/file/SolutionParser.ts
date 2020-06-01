@@ -1,9 +1,15 @@
 import BasicParser from './BasicParser'
-import { TTemplateType, TBlockSplitResult } from '../types'
+import {
+    TTemplateType,
+    TBlockSplitResult,
+    TBlockParseResult
+} from '../types'
 
 export default class SolutionParser extends BasicParser {
-    // 成块解析的结果集
+    // 分块结果
     blockSplitResult: TBlockSplitResult = <TBlockSplitResult>{}
+
+    blockParseResult: TBlockParseResult = <TBlockParseResult>{}
 
     constructor (templatePath: string) {
         super(templatePath, 'solutions');
@@ -20,8 +26,6 @@ export default class SolutionParser extends BasicParser {
 
     __splitBlock(): TBlockSplitResult {
         const { templateSource } = this
-
-
 
         return <TBlockSplitResult>{
             input: templateSource
