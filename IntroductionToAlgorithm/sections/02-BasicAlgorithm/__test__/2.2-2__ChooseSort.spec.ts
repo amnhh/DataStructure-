@@ -9,13 +9,6 @@ const list2 = genRandomNumberList()
 const list3 = genRandomNumberList()
 const list4 = genRandomNumberList()
 const list5 = genRandomNumberList()
-console.log(
-    list1,
-    list2,
-    list3,
-    list4,
-    list5,
-)
 
 describe('选择排序测试用例', () => {
     it('原始选择排序', () => {

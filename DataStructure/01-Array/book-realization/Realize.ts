@@ -1,6 +1,6 @@
 import IArray from './Interface'
 
-export default class implements IArray<number> {
+export default class MyArray implements IArray {
     // 数据集合
     _data: Array<number> = []
 
