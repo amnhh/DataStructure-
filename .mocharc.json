@@ -3,7 +3,8 @@
   "spec": [
     "DataStructure/**/*.spec.ts",
     "Leetcode/**/*.spec.ts",
-    "IntroductionToAlgorithm/**/*.spec.ts"
+    "IntroductionToAlgorithm/**/*.spec.ts",
+    "Imooc/**/*.spec.ts"
   ],
   "require": "ts-node/register"
 }
