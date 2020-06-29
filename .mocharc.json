@@ -4,7 +4,7 @@
     "DataStructure/**/*.spec.ts",
     "Leetcode/**/*.spec.ts",
     "IntroductionToAlgorithm/**/*.spec.ts",
-    "Imooc/**/*.spec.ts"
+    "ImoocDatastructure/**/*.spec.ts"
   ],
   "require": "ts-node/register"
 }
