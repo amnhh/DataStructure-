@@ -1,6 +1,13 @@
 function poweringNumber(x, n) {
+    // n > 0 时的跳出条件
     if (n === 1)
         return x;
+    // n < 0 时的跳出条件
+    if (n === -1)
+        return 1 / x;
+    // n === 0 的输入的返回值
+    if (n === 0)
+        return 1;
     // divide
     var divide, isEven = n % 2 === 0;
     if (isEven)
