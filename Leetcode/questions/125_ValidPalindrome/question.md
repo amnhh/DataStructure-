@@ -22,3 +22,11 @@
 来源：力扣（LeetCode）
 链接：https://leetcode-cn.com/problems/valid-palindrome
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+### 题目的关键点
+
+1. 只考虑字母和数字字符
+2. 空字符串需要返回 true
+3. 忽略大小写
+
+
