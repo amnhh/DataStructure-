@@ -23,7 +23,7 @@ export default function TwoPointsSolution (s: string): string {
     // 字符串恒不变，先考虑化为数组
     const sList: string[] = s.split('')
     // 合法的元音字母校验式
-    const vowelReg = /[aAeEiIoOuU]/;
+    const vowelReg: RegExp = /[aAeEiIoOuU]/;
 
     // 左右指针
     let i: number = 0,
