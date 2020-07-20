@@ -17,16 +17,13 @@ function swap(A: number[], idx1: number, idx2: number): void {
 
 function partition (A: number[], start: number, end: number) {
     const pivotValue: number = A[start]
-    let i: number = start + 1
+    let i: number = start
 
-    for (let j: number = start + 1; j <= end; j ++) {
+    for (let j: number = start + 1; j < end; j ++) {
         // 如果 j 位置上的小于基准值，则应该放在左方
-        if (A[j] < pivotValue) {
-            swap(A, i, j)
-            i ++
+        if (A[j] <= pivotValue) {
+            swap(A, ++i, j)
         }
-
-        j ++
     }
 
     swap(A, i, start)

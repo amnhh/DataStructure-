@@ -15,14 +15,12 @@ function swap(A, idx1, idx2) {
 }
 function partition(A, start, end) {
     var pivotValue = A[start];
-    var i = start + 1;
-    for (var j = start + 1; j <= end; j++) {
+    var i = start;
+    for (var j = start + 1; j < end; j++) {
         // 如果 j 位置上的小于基准值，则应该放在左方
-        if (A[j] < pivotValue) {
-            swap(A, i, j);
-            i++;
+        if (A[j] <= pivotValue) {
+            swap(A, ++i, j);
         }
-        j++;
     }
     swap(A, i, start);
     return i;
