@@ -21,6 +21,7 @@ function partition (A: number[], start: number, end: number) {
 
     for (let j: number = start + 1; j < end; j ++) {
         // 如果 j 位置上的小于基准值，则应该放在左方
+        // 这里其实小于或者小于等于都可以，因为只是判断一个值位于左方还是右方的一个规则而已
         if (A[j] <= pivotValue) {
             swap(A, ++i, j)
         }
@@ -31,5 +32,8 @@ function partition (A: number[], start: number, end: number) {
     // 循环不变式变为 [0, i - 1] 位均小于 pivotValue
     swap(A, i, start)
 
+    // 最重要的其实是这个 return i
+    // 因为有了这个 i，我们才能将原数组划分为两个部分
+    // 才有了之后的 recursively sort subarrays.
     return i
 }
