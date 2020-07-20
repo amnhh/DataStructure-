@@ -86,14 +86,13 @@ export type TSolutionCommentType = ''
 /**
  * 源代码注释所解析出来的文章模块
  */
-/**
- * 源代码注释所解析出来的文章模块
- */
-export type TSolutionArticle = ISolutionParserUnit & {
-    [index in keyof TSolutionCommentType]: string
-} & {
-    commentSource: string
-}
+export type TSolutionArticle = ISolutionParserUnit
+    & {
+        [index in keyof TSolutionCommentType]: string
+    }
+    & {
+        commentSource: string
+    }
 
 /**
  * 源代码分块的结果
