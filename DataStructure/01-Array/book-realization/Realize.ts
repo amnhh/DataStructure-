@@ -2,20 +2,20 @@ import IArray from './Interface'
 
 export default class MyArray implements IArray {
     // 数据集合
-    _data: Array<number> = []
+    data: Array<number> = []
 
     // 容量
-    _capacity: number = 0
+    capacity: number = 0
 
-    _size: number = 0
+    size: number = 0
 
     // 构造器
     constructor(capacity: number, initValue: number = 0) {
-        this._data = new Array<number>()
-        this._capacity = capacity
+        this.data = new Array<number>()
+        this.capacity = capacity
 
-        for (; this._size < capacity; this._size ++) {
-            this._data[this._size] = initValue
+        for (; this.size < capacity; this._size ++) {
+            this.data[this.size] = initValue
         }
     }
 
@@ -24,22 +24,22 @@ export default class MyArray implements IArray {
      *
      * @desc 报告数组当前的规模
      */
-    size(): number {
-        return this._size
+    getSize(): number {
+        return this.size
     }
 
     /**
      * 获取索引为 r 的元素
      */
     get(r: number): number {
-        return this._data[r]
+        return this.data[r]
     }
 
     /**
      * 用 e 替换索引为 r 的数值
      */
     put(r: number, e: number): void {
-        this._data[r] = e
+        this.data[r] = e
     }
 
     /**
