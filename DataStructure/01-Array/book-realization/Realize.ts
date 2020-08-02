@@ -7,6 +7,7 @@ export default class MyArray implements IArray {
     // 容量
     capacity: number = 0
 
+    // 当前存储了多少个元素
     size: number = 0
 
     // 构造器
@@ -43,16 +44,25 @@ export default class MyArray implements IArray {
     }
 
     /**
+     * 扩容
+     */
+    expand(): void {
+        
+    }
+
+    /**
      * 将 e 插入到索引为 r 的位置上，其他的后继元素依次向后挪
      */
     insert(r: number, e: number): void {
-
+        
     }
 
     /**
      * 判断是否数组已有序
      */
-    disordered(): boolean {}
+    disordered(): boolean {
+
+    }
 
     /**
      * 升序排列
