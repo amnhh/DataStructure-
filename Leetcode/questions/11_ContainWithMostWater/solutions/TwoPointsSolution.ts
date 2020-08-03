@@ -30,7 +30,7 @@ export default function TwoPointsSolution (height: number[]): number {
     while (i < j) {
 
         const needRightPointMove = height[i] > height[j]
-        let current
+        let current: number
 
         if (needRightPointMove) {
             current = height[j] * (j - i)
