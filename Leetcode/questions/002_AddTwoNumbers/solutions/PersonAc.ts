@@ -1,19 +1,18 @@
 /**
  * @title 个人解法
  *
- * @index 次序
+ * @index 1
  *
- * @trainOfThought 思路
+ * @trainOfThought
+ *  如题所说，依次的去对 l1 和 l2 的每一个元素进行访问。同时维护：
+ *     overflow: 进1逻辑
+ *     ret: 遍历中的next逻辑维护 => 感觉这里使用 cur 更合适些
+ *     head: 负责提前持有 ret 的引用，在结果时返回
  *
- * @complexAnalysis 复杂度分析
+ * @complexAnalysis
+ *  时间 O(m + n)
  *
- * @type 解法类型
- *
- * @note 笔记
- *
- * @remark 备注
- *
- * @category 想要分配到哪个大类下
+ * @type 普通依题意的迭代解法
  */
 type ListNodeNext = ListNode | null
 
