@@ -15,18 +15,20 @@
  *
  * @category 想要分配到哪个大类下
  */
+type ListNodeNext = ListNode | null
+
 class ListNode {
     val: number
-    next: ListNode | null
-    constructor (val?: number, next?: ListNode | null) {
+    next: ListNodeNext
+    constructor (val?: number, next?: ListNodeNext) {
         this.val = val || 0
         this.next = next || null
     }
 }
 
-export default function AddTwoNumbers (l1: ListNode | null, l2: ListNode | null): ListNode | null {
-    let ret: ListNode | null = new ListNode(0)
-    const head: ListNode | null = ret
+export default function AddTwoNumbers (l1: ListNodeNext, l2: ListNodeNext): ListNodeNext {
+    let ret: ListNodeNext = new ListNode(0)
+    const head: ListNodeNext = ret
 
     let overflow: number = 0
 
@@ -42,7 +44,7 @@ export default function AddTwoNumbers (l1: ListNode | null, l2: ListNode | null)
     return head.next
 
 
-    function resolveOverflow(l1?: ListNode | null, l2?: ListNode | null): ListNode {
+    function resolveOverflow(l1?: ListNodeNext, l2?: ListNodeNext): ListNode {
         l1 = l1 || { val: 0, next: null }
         l2 = l2 || { val: 0, next: null }
 
