@@ -10,7 +10,7 @@
  *     head: 负责提前持有 ret 的引用，在结果时返回
  *
  * @complexAnalysis
- *  时间 O(m + n)
+ *  时间 O(max(m + n))
  *
  * @type 普通依题意的迭代解法
  */
